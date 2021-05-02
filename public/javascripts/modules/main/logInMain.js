@@ -1,6 +1,9 @@
+import request from '../functions/request.js';
+
 var createUser = false;
 
 document.getElementById('btnSubmit').addEventListener('click', function() {
+    
     var emailInput = document.getElementById('emailInput');
     var passwordInput = document.getElementById('passwordInput');
 
@@ -9,7 +12,12 @@ document.getElementById('btnSubmit').addEventListener('click', function() {
         var confirmPasswordInput = document.getElementById('confirmPasswordInput');
 
         if(passwordInput.value == confirmPasswordInput.value) {
-            
+            var user = {Email: emailInput.value, Password: passwordInput.value};
+
+            request('/request/users', 'POST', JSON.stringify(user), function(result) {
+                console.log(result);
+            });
+
         } else {
             document.getElementById('error').innerHTML = "Passwords not matching";
             document.getElementById('error').className = 'visible';
