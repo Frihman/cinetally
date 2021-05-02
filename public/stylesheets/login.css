@@ -33,7 +33,7 @@ input {
     background-color: #f0f0f0;
     border: 0.5px solid rgb(204, 204, 204);
     border-radius: 10px;
-    padding: 4%;
+    padding: 4% 4% 2% 4%;
 }
 
 #confirmPasswordInput.hidden {
@@ -47,5 +47,16 @@ input {
 #switchLogInForm {
     cursor: pointer;
     float: right;
+}
+
+#error {
+    margin: 2% 0% 0% 0%;
+    text-align: center;
+    color: red;
+    font-size: 0.9em;
+}
+
+#error.hidden {
+    display: none;
 }
 
