@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Cinetally - Log In' });
+  res.render('login', { title: 'Cinetally - Log In' });
 });
 
 module.exports = router;

@@ -1,0 +1,38 @@
+h1 {
+    text-align: center;
+
+}
+
+h2 {
+    margin: 5% 0% 5% 0%;
+    text-align: center;
+}
+
+p {
+    margin: 0;
+}
+
+input {
+    margin: 4% 0% 10% 0;
+    width: 98%;
+    height: 2vw;
+}
+
+#mainContent {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#login {
+    width: 40%;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    border: 0.5px solid rgb(204, 204, 204);
+    border-radius: 10px;
+    padding: 4%;
+}
+
+#switchLogInForm {
+    cursor: pointer;
+}
+
