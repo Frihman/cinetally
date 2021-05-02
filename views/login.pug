@@ -14,11 +14,16 @@ html
         input(type='text' id='emailInput')
         
         p Password
-        input(type='password' id='userNameInput')
+        input(type='password' id='passwordInput')
+
+        p#pConfirmPassword(class='hidden') Confirm Password
+        input(type='password' id='confirmPasswordInput' class='hidden')
 
         button(id='btnSubmit') Log in
 
-        a(id='switchLogInForm' cursor='pointer') Don't have an account?
+        a(id='switchLogInForm') Don't have an account?
+      
+    script(src='/javascripts/modules/logInMain.js' type='module')
 
         
   
