@@ -9,7 +9,7 @@ export default function request(location, method, data, callback) {
                 
                 callback(xhr.response);
             } else{
-                console.log(xhr.response);
+                callback(xhr.response);
             }
         }
     } else if (method == 'GET') {
@@ -19,7 +19,7 @@ export default function request(location, method, data, callback) {
                 
                 callback(xhr.response);
             } else {
-                console.log(xhr.response);
+                callback(xhr.response);
             }
         }
     }

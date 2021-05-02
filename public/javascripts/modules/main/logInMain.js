@@ -6,13 +6,13 @@ document.getElementById('btnSubmit').addEventListener('click', function() {
     
     var emailInput = document.getElementById('emailInput');
     var passwordInput = document.getElementById('passwordInput');
+    var user = {Email: emailInput.value, Password: passwordInput.value};
 
     if (createUser == true) {
         
         var confirmPasswordInput = document.getElementById('confirmPasswordInput');
 
         if(passwordInput.value == confirmPasswordInput.value) {
-            var user = {Email: emailInput.value, Password: passwordInput.value};
 
             request('/request/users', 'POST', JSON.stringify(user), function(result) {
                 console.log(result);
@@ -23,7 +23,9 @@ document.getElementById('btnSubmit').addEventListener('click', function() {
             document.getElementById('error').className = 'visible';
         }
     } else {
-
+        request('/request/login', 'POST', JSON.stringify(user), function(result) {
+            console.log(result);
+        });
     }
     
 });
