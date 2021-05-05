@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET login page. */
 router.get('/', function(req, res, next) {
-  console.log(req.session);
   if (req.session.loggedIn == true) {
-    res.render('index', { title: 'Cinetally - Home' });
+    res.redirect('/');
   } else {
-    res.redirect('/loginpage');
+    res.render('login', { title: 'Cinetally - Log In' });
   }
 });
 

@@ -15,7 +15,7 @@ document.getElementById('btnSubmit').addEventListener('click', function() {
         if(passwordInput.value == confirmPasswordInput.value) {
 
             request('/request/users', 'POST', JSON.stringify(user), function(result) {
-                console.log(result);
+                window.location = '/';
             });
 
         } else {
@@ -24,7 +24,7 @@ document.getElementById('btnSubmit').addEventListener('click', function() {
         }
     } else {
         request('/request/login', 'POST', JSON.stringify(user), function(result) {
-            console.log(result);
+            window.location = '/';
         });
     }
     

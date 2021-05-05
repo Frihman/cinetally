@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var mySQLQuery = require('../node_functions/mySQLQuery');
-var session = require('express-session');
 var bcrypt = require('bcrypt');
 var saltRounds = 10;
 
@@ -17,13 +16,14 @@ router.post('/login', function(req, res, next) {
     if (result.length > 0) {
       bcrypt.compare(req.body.Password, result[0].Password, function(err, result) {
         if (result == true) {
-          res.send('Logged in!');
+          req.session.loggedIn = true;
+          res.redirect('/');
         } else {
-          res.send('Error logging in!');
+          res.redirect('/loginpage');
         }
-    });
+      });
     } else {
-      res.send('Error logging in!');
+      res.redirect('/loginpage');
     }
     
   });
@@ -36,7 +36,8 @@ router.post('/users', function(req, res, next) {
       bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(req.body.Password, salt, function(err, hash) {
             mySQLQuery(`INSERT INTO User (Email, Password) VALUES ('${req.body.Email}', '${hash}')`, function(result) {
-              res.send('User created!');
+              req.session.loggedIn = true;
+              res.redirect('/');
             });
         });
       });
