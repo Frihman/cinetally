@@ -5,10 +5,10 @@ block content
     h2= title
     #mainContent
         #bigSearch
-            input(type="text" id="inputBigSearch" placeholder="query" style="font-size:18px")
+            input(type="text" id="inputBigSearch" placeholder="query" style="font-size:18px" value=`${query}`)
             button(id="btnBigSearch") Go
         ul#entries
         each element in movieList
             li= element.Title
     
-    script(src="/javascripts/modules/main/indexMain.js" type="module")
+    script(src="/javascripts/modules/main/searchMain.js" type="module")

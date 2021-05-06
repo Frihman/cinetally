@@ -18,7 +18,7 @@ router.get('/:query', function(req, res, next) {
             }
         }
         getJSON(options, function(result) {
-            res.render('search', { title: 'Search', email: req.session.Email, movieList: result.Search});
+            res.render('search', { title: 'Search', email: req.session.Email, movieList: result.Search, query: req.params.query});
         });
         
     } else {

@@ -1,5 +1,5 @@
-var input = document.getElementById('inputSearch');
-var button = document.getElementById('btnSearch');
+var input = document.getElementById('inputBigSearch');
+var button = document.getElementById('btnBigSearch');
 
 button.addEventListener('click', function(){
     var path = '/search/' + input.value;
