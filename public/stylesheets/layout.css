@@ -3,6 +3,7 @@ body {
   margin: 0px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 300;
+  background-color:rgb(226, 226, 226);
 }
 
 a {
@@ -11,7 +12,8 @@ a {
 
 h1 {
   font-size: 4em;
-  
+  margin: 0;
+  display: inline-block;
 }
 
 h2 {
@@ -20,4 +22,24 @@ h2 {
 
 header {
   height: 20%;
+  border-bottom: solid rgb(204, 204, 204) 1px;
+  background-color: #ffffff;
+  padding: 1%;
 }
+
+#profile {
+  float: right;
+  display: block;
+}
+
+#mainContent {
+  border: solid rgb(204, 204, 204) 1px;
+  background-color: #ffffff;
+  width: 80%;
+  height: 1000px;
+  margin: 0 auto;
+  margin-top: 1%;
+  border-radius: 5px;
+}
+  
+
