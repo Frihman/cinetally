@@ -1,0 +1,28 @@
+#mainContent {
+    border: solid rgb(204, 204, 204) 1px;
+    background-color: #ffffff;
+    width: 80%;
+    height: 1000px;
+    margin: 0 auto;
+    margin-top: 1%;
+    border-radius: 5px;
+    padding-top: 40px;
+}
+
+#bigSearch {
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 40px;
+}
+
+#inputBigSearch {
+    width: 93%;
+    height: 40px;
+}
+
+#btnBigSearch {
+    width: 5%;
+    height: 45px;
+}

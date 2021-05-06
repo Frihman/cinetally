@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   if (req.session.loggedIn == true) {
     res.redirect('/');
   } else {
-    res.render('login', { title: 'Cinetally - Log In' });
+    res.render('login', { title: 'Log In' });
   }
 });
 

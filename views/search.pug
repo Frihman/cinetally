@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/search.css')
+    h2= title
+    #mainContent
+        #bigSearch
+            input(type="text" id="inputBigSearch" placeholder="query" style="font-size:18px")
+            button(id="btnBigSearch") Go
+        ul#entries
+    
+    script(src="/javascripts/modules/main/indexMain.js" type="module")

@@ -1,19 +1,20 @@
 doctype html
 html
   head
-    title= title
+    title= "Cinetally - " + title
     link(rel='stylesheet', href='/stylesheets/layout.css')
     link(rel="preconnect" href="https://fonts.gstatic.com")
     link(href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700&display=swap" rel="stylesheet")
     script(src="/javascripts/modules/functions/searchInput.js" type="module")
   body
     header
-      h1 Cinetally
+      a(href='/')
+        h1 Cinetally
       #searchandprofile
         #profile
           p= email
           button(id="btnLogOut") Log Out
         #search
-          input(type="text")
-          button(id="btnSearch") Search
+          input(type="text" placeholder="Search for a movie...")
+          button(id="btnSearch") Go
     block content
