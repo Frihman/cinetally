@@ -1,0 +1,9 @@
+#mainContent {
+    border: solid rgb(204, 204, 204) 1px;
+    background-color: #ffffff;
+    width: 80%;
+    height: 1000px;
+    margin: 0 auto;
+    margin-top: 1%;
+    border-radius: 5px;
+}
