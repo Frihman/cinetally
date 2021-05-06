@@ -27,6 +27,14 @@ header {
   padding: 1%;
 }
 
+#searchandprofile {
+  float: right;
+}
+
+#search {
+  float: left;
+}
+
 #profile {
   float: right;
   display: block;
