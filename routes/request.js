@@ -12,9 +12,28 @@ router.get('/users', function(req, res, next) {
 });
 
 router.get('/movie/:id', function(req, res, next) {
-  mySQLQuery(`SELECT * FROM Movie WHERE ImdbId = '${req.params.id}' AND UserId = '${req.session.Id}'`, function(result) {
-    res.send(result);
-  });
+  if(req.session.loggedIn) {
+    mySQLQuery(`SELECT * FROM Movie WHERE ImdbId = '${req.params.id}' AND UserId = '${req.session.Id}'`, function(result) {
+      res.send(result);
+    });
+  } else {
+    res.send('access denied');
+  }
+  
+});
+
+router.post('/movie/inactive', function(req, res, next) {
+  if(req.session.loggedIn) {
+    mySQLQuery(`INSERT INTO Movie_inactive (ImdbId, Title, Year, Poster, Watched, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, ${req.session.Id})`, function() {
+      mySQLQuery(`DELETE FROM Movie WHERE ImdbId = '${req.body.imdbID}' AND UserId = '${req.session.Id}'`, function(result) {
+        console.log(result);  
+        res.send(result);
+      });
+    });
+  } else {
+    res.send('access denied');
+  }
+  
 });
 
 router.post('/login', function(req, res, next) {
@@ -69,9 +88,24 @@ router.post('/users', function(req, res, next) {
 
 router.post('/movie', function(req, res, next) {
   if(req.session.loggedIn) {
-    mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Watched, Active, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, 1, '${req.session.Id}')`, function(result) {
-      res.send(result);
+    mySQLQuery(`SELECT * FROM Movie_inactive WHERE ImdbId = '${req.body.imdbID}' AND UserId = '${req.session.Id}'`, function(result) {
+      let insertResult = result;
+      console.log(insertResult);
+      if(result.length > 0) {
+        mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Rating, Watched, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', ${result[0].Rating}, ${result[0].Watched}, ${req.session.Id})`, function(result) {
+          mySQLQuery(`DELETE FROM Movie_inactive WHERE ImdbId = '${insertResult[0].ImdbId}' AND UserId = '${req.session.Id}'`, function() {
+            res.send(result);
+          });          
+          
+        });
+      } else {
+        mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Watched, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, '${req.session.Id}')`, function(result) {
+          res.send(result);
+        });
+      }
     });
+    
+    
   } else {
     res.send('access denied');
   }
