@@ -8,8 +8,6 @@ export default function request(location, method, data, callback) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 
                 callback(xhr.response);
-            } else{
-                callback(xhr.response);
             }
         }
     } else if (method == 'GET') {
@@ -17,8 +15,6 @@ export default function request(location, method, data, callback) {
         xhr.onreadystatechange = () => {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 
-                callback(xhr.response);
-            } else {
                 callback(xhr.response);
             }
         }

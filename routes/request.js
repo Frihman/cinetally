@@ -11,6 +11,12 @@ router.get('/users', function(req, res, next) {
   });
 });
 
+router.get('/movie/:id', function(req, res, next) {
+  mySQLQuery(`SELECT * FROM Movie WHERE ImdbId = '${req.params.id}' AND UserId = '${req.session.Id}'`, function(result) {
+    res.send(result);
+  });
+});
+
 router.post('/login', function(req, res, next) {
   mySQLQuery(`SELECT * FROM User WHERE Email = '${req.body.Email.replace(/'/g, "''")}'`, function(result) {
     var data = result[0];
@@ -33,32 +39,44 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/users', function(req, res, next) {
-  mySQLQuery(`SELECT * FROM User WHERE Email = '${req.body.Email.replace(/'/g, "''")}'`, function(result) {
-    var data = result[0];
-    if (result.length < 1) {
-      
-      bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(req.body.Password, salt, function(err, hash) {
-            mySQLQuery(`INSERT INTO User (Email, Password) VALUES ('${req.body.Email.replace(/'/g, "''")}', '${hash}')`, function(result) {
-              req.session.loggedIn = true;
-              req.session.Id = data.Id;
-              req.session.Email = data.Email;
-              res.redirect('/');
-            });
+  if(req.session.loggedIn) {
+    mySQLQuery(`SELECT * FROM User WHERE Email = '${req.body.Email.replace(/'/g, "''")}'`, function(result) {
+      var data = result[0];
+      if (result.length < 1) {
+        
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+          bcrypt.hash(req.body.Password, salt, function(err, hash) {
+              mySQLQuery(`INSERT INTO User (Email, Password) VALUES ('${req.body.Email.replace(/'/g, "''")}', '${hash}')`, function(result) {
+                req.session.loggedIn = true;
+                req.session.Id = data.Id;
+                req.session.Email = data.Email;
+                res.redirect('/');
+              });
+          });
         });
-      });
-
-    } else {
-      res.send('user alerady exists!');
-    }
-  });
+  
+      } else {
+        res.send('user alerady exists!');
+      }
+    });
+  } else {
+    res.send('access denied');
+  }
+  
+  
   
 });
 
 router.post('/movie', function(req, res, next) {
-  mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Watched, Active, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, 1, '${req.session.Id}')`, function(result) {
-    res.send(result);
-  });
+  if(req.session.loggedIn) {
+    mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Watched, Active, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, 1, '${req.session.Id}')`, function(result) {
+      res.send(result);
+    });
+  } else {
+    res.send('access denied');
+  }
+  
+  
 });
 
 module.exports = router;

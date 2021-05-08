@@ -15,7 +15,7 @@ block content
                         #yearTitle
                             p= element.Year
                             h3= element.Title
-                        div(class="addMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
+                        div(id=`div_${element.imdbID}` class="addMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
                             i(id=`i_${element.imdbID}` class="fas fa-plus")
                             p(id=`p_${element.imdbID}`) Add to list
     

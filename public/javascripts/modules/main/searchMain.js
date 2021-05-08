@@ -1,4 +1,5 @@
 import request from '../functions/request.js';
+import checkAddedMovies from '../functions/checkAddedMovies.js';
 
 var input = document.getElementById('inputBigSearch');
 var button = document.getElementById('btnBigSearch');
@@ -20,12 +21,14 @@ input.addEventListener('keyup', function(event) {
 });
 
 function addMovie(movie) {
+  var arr = JSON.parse(movie);
+  document.getElementById(`i_${arr.imdbID}`).className = 'fas fa-circle-notch fa-spin';
   request('/request/movie', 'POST', movie, function() {
-    movie = JSON.parse(movie);
-    document.getElementById(`i_${movie.imdbID}`).className = 'fas fa-check';
-    document.getElementById(`p_${movie.imdbID}`).innerHTML = 'Added';
+    document.getElementById(`i_${arr.imdbID}`).className = 'fas fa-check';
+    document.getElementById(`p_${arr.imdbID}`).innerHTML = 'Added';
   });
-
 }
+
+checkAddedMovies();
 
 window.addMovie = addMovie;
