@@ -8,7 +8,12 @@ block content
             input(type="text" id="inputBigSearch" placeholder="query" style="font-size:18px" value=`${query}`)
             button(id="btnBigSearch") Go
         ul#entries
-        each element in movieList
-            li= element.Title
+            each element in movieList
+                li
+                    a
+                        img(src=`${element.Poster}`)
+                        #yearTitle
+                            p= element.Year
+                            h3= element.Title
     
     script(src="/javascripts/modules/main/searchMain.js" type="module")

@@ -2,7 +2,6 @@
     border: solid rgb(204, 204, 204) 1px;
     background-color: #ffffff;
     width: 80%;
-    height: 1000px;
     margin: 0 auto;
     margin-top: 1%;
     border-radius: 5px;
@@ -15,6 +14,7 @@
     text-align: center;
     border-bottom: 1px solid black;
     padding-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 #inputBigSearch {
@@ -25,4 +25,43 @@
 #btnBigSearch {
     width: 13%;
     height: 45px;
+}
+
+#entries {
+    list-style-type: none;
+    margin: 0px 5px 0px 5px;
+    margin: 0 auto;
+    width: 70%;
+    
+}
+
+#entries li{
+    list-style-type: none;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    display: block;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+#entries li img {
+    width: 20%;
+    display: inline-block;
+}
+
+#entries a {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    
+}
+
+#entries a:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+#yearTitle {
+    float: right;
+    width: 78%;
+    padding: 5px;
 }
