@@ -6,6 +6,7 @@
     margin-top: 1%;
     border-radius: 5px;
     padding-top: 40px;
+    overflow: auto;
 }
 
 #bigSearch {
@@ -62,6 +63,38 @@
 
 #yearTitle {
     float: right;
-    width: 78%;
+    width: 77%;
+    padding: 1%;
+    padding-left: 1.5%;
+}
+
+#yearTitle h3 {
+    margin-top: 2%;
+}
+
+#yearTitle p{
+    margin-top: 2%;
+}
+
+.addMovie {
+    cursor: pointer;
     padding: 5px;
+    border-radius: 5px;
+    float: right;
+    margin-top: -5%;
+    border: 1px solid rgb(204, 204, 204);
+}
+
+.addMovie:hover {
+    background-color: #ffffff;
+    
+}
+
+.addMovie p, .addMovie i{
+    display: inline-block;
+    margin: 0;
+}
+
+.addMovie p {
+    margin-left: 4px;
 }
