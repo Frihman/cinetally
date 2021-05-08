@@ -1,3 +1,5 @@
+import request from '../functions/request.js';
+
 var input = document.getElementById('inputBigSearch');
 var button = document.getElementById('btnBigSearch');
 
@@ -18,11 +20,11 @@ input.addEventListener('keyup', function(event) {
 });
 
 function addMovie(movie) {
-  movie = JSON.parse(movie);
-
-
-  document.getElementById(`i_${movie.imdbID}`).className = 'fas fa-check';
-  document.getElementById(`p_${movie.imdbID}`).innerHTML = 'Added';
+  request('/request/movie', 'POST', movie, function() {
+    movie = JSON.parse(movie);
+    document.getElementById(`i_${movie.imdbID}`).className = 'fas fa-check';
+    document.getElementById(`p_${movie.imdbID}`).innerHTML = 'Added';
+  });
 
 }
 

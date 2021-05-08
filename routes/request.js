@@ -56,7 +56,7 @@ router.post('/users', function(req, res, next) {
 });
 
 router.post('/movie', function(req, res, next) {
-  mySQLQuery(`INSERT INTO Movies (ImdbId, Title, Year, Poster, Watched, Active, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, 1, '${req.session.Id}')`, function(result) {
+  mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Watched, Active, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, 1, '${req.session.Id}')`, function(result) {
     res.send(result);
   });
 });
