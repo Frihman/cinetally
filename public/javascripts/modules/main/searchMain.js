@@ -16,3 +16,14 @@ input.addEventListener('keyup', function(event) {
       button.click();
     }
 });
+
+function addMovie(movie) {
+  movie = JSON.parse(movie);
+
+
+  document.getElementById(`i_${movie.imdbID}`).className = 'fas fa-check';
+  document.getElementById(`p_${movie.imdbID}`).innerHTML = 'Added';
+
+}
+
+window.addMovie = addMovie;
