@@ -61,18 +61,18 @@
     background-color: rgb(235, 235, 235);
 }
 
-#yearTitle {
+.yearTitle {
     float: right;
     width: 77%;
     padding: 1%;
     padding-left: 1.5%;
 }
 
-#yearTitle h3 {
+.yearTitle h3 {
     margin-top: 2%;
 }
 
-#yearTitle p{
+.yearTitle p{
     margin-top: 2%;
 }
 

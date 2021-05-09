@@ -2,8 +2,58 @@
     border: solid rgb(204, 204, 204) 1px;
     background-color: #ffffff;
     width: 80%;
-    height: 1000px;
     margin: 0 auto;
     margin-top: 1%;
     border-radius: 5px;
+    overflow: auto;
+    min-height: 1000px;
+}
+
+#entries {
+    list-style-type: none;
+    margin: 0px 5px 0px 5px;
+    margin: 0 auto;
+    width: 70%;
+    padding-top: 100px;
+    
+}
+
+#entries li{
+    list-style-type: none;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    display: block;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+#entries li img {
+    width: 20%;
+    display: inline-block;
+}
+
+#entries a {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    
+}
+
+#entries a:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.yearTitle {
+    float: right;
+    width: 77%;
+    padding: 1%;
+    padding-left: 1.5%;
+}
+
+.yearTitle h3 {
+    margin-top: 2%;
+}
+
+.yearTitle p{
+    margin-top: 2%;
 }
