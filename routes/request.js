@@ -67,18 +67,21 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/users', function(req, res, next) {
-  if(req.session.loggedIn) {
     mySQLQuery(`SELECT * FROM User WHERE Email = '${req.body.Email.replace(/'/g, "''")}'`, function(result) {
-      var data = result[0];
       if (result.length < 1) {
         
         bcrypt.genSalt(saltRounds, function(err, salt) {
           bcrypt.hash(req.body.Password, salt, function(err, hash) {
               mySQLQuery(`INSERT INTO User (Email, Password) VALUES ('${req.body.Email.replace(/'/g, "''")}', '${hash}')`, function(result) {
-                req.session.loggedIn = true;
-                req.session.Id = data.Id;
-                req.session.Email = data.Email;
-                res.redirect('/');
+                mySQLQuery(`SELECT * FROM User WHERE Email = '${req.body.Email.replace(/'/g, "''")}'`, function(result) {
+                  console.log(result);
+                  req.session.loggedIn = true;
+                  req.session.Id = result[0].Id;
+                  req.session.Email = result[0].Email;
+                  res.redirect('/');
+                });
+                
+                
               });
           });
         });
@@ -87,9 +90,6 @@ router.post('/users', function(req, res, next) {
         res.send('user alerady exists!');
       }
     });
-  } else {
-    res.send('access denied');
-  }
   
   
   
