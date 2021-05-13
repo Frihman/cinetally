@@ -72,6 +72,10 @@
     display: none;
 }
 
+#bigSearch h2 {
+    font-weight: 300;
+}
+
 #inputBigSearch {
     width: 85%;
     height: 40px;
