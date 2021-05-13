@@ -9,7 +9,9 @@ function displayList() {
 
         for (let i = 0; i < data.length; i++) {
             var li = document.createElement('li');
-            li.innerHTML = `<a>
+            li.className= 'entry';
+            li.id = `li_${data[i].ImdbId}`;
+            li.innerHTML = `<a id="a_${data[i].ImdbId}">
             <img src="${data[i].Poster}">
             <div class="yearTitle">
             <p>${data[i].Year}</p>
