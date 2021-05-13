@@ -37,6 +37,30 @@
     background-color: rgb(238, 238, 238);
 }
 
+#cancelConfirm {
+    float: right;
+    width: 180px;
+    display: none;
+}
+
+#btnConfirm {
+    background-color: rgb(0, 202, 0);
+    float: right;
+}
+
+#btnConfirm:hover {
+    background-color: rgb(0, 167, 0);
+}
+
+#btnCancel {
+    background-color: rgb(255, 41, 41);
+}
+
+
+#btnCancel:hover {
+    background-color: rgb(209, 0, 0);
+}
+
 #entries {
     list-style-type: none;
     margin: 0px 5px 0px 5px;
