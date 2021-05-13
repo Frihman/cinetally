@@ -5,7 +5,7 @@ var getJSON = httpRequest.getJSON;
 
 
 
-/* GET home page. */
+/* GET search page. */
 router.get('/:query', function(req, res, next) {
     var query = encodeURI(req.params.query);
     if (req.session.loggedIn == true) {

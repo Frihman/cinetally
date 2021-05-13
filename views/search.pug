@@ -11,7 +11,10 @@ block content
             each element in movieList
                 li
                     a
-                        img(src=`${element.Poster}`)
+                        if element.Poster == "N/A"
+                            img(src="https://via.placeholder.com/140x210?text=Cinetally")
+                        else
+                            img(src=`${element.Poster}`)
                         .yearTitle
                             p= element.Year
                             h3= element.Title

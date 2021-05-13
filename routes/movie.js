@@ -5,7 +5,7 @@ var getJSON = httpRequest.getJSON;
 
 
 
-/* GET home page. */
+/* GET movie page. */
 router.get('/:id', function(req, res, next) {
     if (req.session.loggedIn == true) {
         var options = {
