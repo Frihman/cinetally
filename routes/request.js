@@ -121,4 +121,51 @@ router.post('/movie', function(req, res, next) {
   
 });
 
+router.delete('/movies', function(req, res, next) {
+  if (req.session.loggedIn) {
+    var query = '';
+    
+    for (let i = 0; i < req.body.length; i++) {
+       if (i == req.body.length - 1)  {
+         query += `'${req.body[i]}')`;
+       } else {
+         query += `'${req.body[i]}', `;
+       }
+    }
+    mySQLQuery(`SELECT * FROM Movie WHERE ImdbId IN (${query}`, function(result) {
+      var insertResult = result;
+      
+      var query = '';
+
+      for(let i = 0; i < insertResult.length; i++) {
+        if (i == insertResult.length - 1) {
+          query += `('${insertResult[i].ImdbId}', '${insertResult[i].Title}', '${insertResult[i].Year}', '${insertResult[i].Poster}', '${insertResult[i].Watched}', '${insertResult[i].UserId}')`;
+        } else {
+          query += `('${insertResult[i].ImdbId}', '${insertResult[i].Title}', '${insertResult[i].Year}', '${insertResult[i].Poster}', '${insertResult[i].Watched}', '${insertResult[i].UserId}'), `;
+        }
+        
+        
+      }
+      mySQLQuery(`INSERT INTO Movie_inactive (ImdbId, Title, Year, Poster, Watched, UserId) VALUES ` + query, function() {
+        var query = '';
+        for (let i = 0; i < req.body.length; i++) {
+          if (i == req.body.length - 1)  {
+            query += `'${req.body[i]}')`;
+          } else {
+            query += `'${req.body[i]}', `;
+          }
+        }
+        
+        mySQLQuery(`DELETE FROM Movie WHERE ImdbId IN (${query} AND UserId = '${req.session.Id}'`, function(result) {
+          res.send(result);
+        });
+      });
+    });
+    
+  } else {
+    res.send('access denied');
+  }
+  
+});
+
 module.exports = router;
