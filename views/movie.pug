@@ -17,6 +17,7 @@ block content
                 p#cast
                     b Cast
                 p= movie.Actors
+                a(href=`https://www.imdb.com/title/${movie.imdbID}`) Link to IMDb
                 div(id=`div_${movie.imdbID}` class="addMovie" onclick=`addMovie('${JSON.stringify(movie)}')`)
                     i(id=`i_${movie.imdbID}` class="fas fa-plus")
                     p(id=`p_${movie.imdbID}`) Add to list
