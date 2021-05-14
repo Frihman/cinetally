@@ -18,14 +18,22 @@ export function displayList() {
                 li.id = `li_${data[i].ImdbId}`;
                 li.innerHTML = `
                 <div id="div_${data[i].ImdbId}" class="entryLink">
-                <img src="${data[i].Poster}">
+                `;
+
+                if(data[i].Poster == 'N/A') {
+                    li.innerHTML += `<img src="https://via.placeholder.com/140x210?text=Cinetally">`;
+                } else {
+                    li.innerHTML += `<img src="${data[i].Poster}">`;
+                }
+
+                li.innerHTML += `
                 <div class="yearTitle">
                 <p>${data[i].Year}</p>
                 <h3>${data[i].Title}</h3>
                 </div>
                 </div>
                 <div id="div_${data[i].ImdbId}" class="btnWatched">
-                <i id="i_${data[i].ImdbId}" class="fas fa-plus"></i>
+                <i id="i_${data[i].ImdbId}" class="fas fa-eye"></i>
                 <p id="p_${data[i].ImdbId}">Mark as watched</p>
                 </div>
                 `;
