@@ -10,7 +10,7 @@ block content
         ul#entries
             each element in movieList
                 li
-                    a
+                    a(href=`/movie/${element.imdbID}`)
                         if element.Poster == "N/A"
                             img(src="https://via.placeholder.com/140x210?text=Cinetally")
                         else
@@ -22,4 +22,5 @@ block content
                             i(id=`i_${element.imdbID}` class="fas fa-plus")
                             p(id=`p_${element.imdbID}`) Add to list
     
-    script(src="/javascripts/modules/main/searchMain.js" type="module")
+    script(src="/javascripts/modules/functions/addMovie.js" type="module")
+    script(src="/javascripts/modules/functions/bigSearchInput.js" type="module")

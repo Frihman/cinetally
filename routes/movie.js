@@ -17,7 +17,7 @@ router.get('/:id', function(req, res, next) {
             }
         }
         getJSON(options, function(result) {
-            res.render('movie', { title: result.Title, email: req.session.Email, movieList: result});
+            res.render('movie', { title: result.Title, email: req.session.Email, movie: result});
         });
         
     } else {

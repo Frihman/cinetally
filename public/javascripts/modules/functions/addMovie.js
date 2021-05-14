@@ -1,5 +1,5 @@
-import request from '../functions/request.js';
-import checkAddedMovies from '../functions/checkAddedMovies.js';
+import request from './request.js';
+import checkAddedMovies from './checkAddedMovies.js';
 
 function addMovie(movie) {
   var arr = JSON.parse(movie);

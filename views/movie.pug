@@ -1,3 +1,24 @@
 extends layout
 
 block content
+    link(rel='stylesheet', href='/stylesheets/movie.css')
+    h2 Movie
+    #mainContent
+        #movie
+            if movie.Poster == "N/A"
+                img(src="https://via.placeholder.com/140x210?text=Cinetally")
+            else
+                img(src=`${movie.Poster}`)
+            #movieInfo
+                p= `${movie.Year} - (${movie.Runtime})`
+                h2= movie.Title
+                p 
+                    i= movie.Plot
+                p#cast
+                    b Cast
+                p= movie.Actors
+                div(id=`div_${movie.imdbID}` class="addMovie" onclick=`addMovie('${JSON.stringify(movie)}')`)
+                    i(id=`i_${movie.imdbID}` class="fas fa-plus")
+                    p(id=`p_${movie.imdbID}`) Add to list
+    
+    script(src="/javascripts/modules/functions/addMovie.js" type="module")

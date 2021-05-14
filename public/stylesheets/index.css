@@ -17,27 +17,6 @@
     overflow: none;
 }
 
-.btnDefault {
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 5px;
-    float: left;
-    border: 1px solid rgb(204, 204, 204);
-}
-
-.btnDefault p, .btnDefault i{
-    display: inline-block;
-    margin: 0;
-}
-
-.btnDefault p {
-    margin-left: 4px;
-}
-
-.btnDefault:hover {
-    background-color: rgb(238, 238, 238);
-}
-
 #cancelConfirm {
     float: right;
     width: 180px;

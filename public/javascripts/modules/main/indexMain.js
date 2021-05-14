@@ -13,7 +13,7 @@ export function displayList() {
                 var li = document.createElement('li');
                 li.className= 'entry';
                 li.id = `li_${data[i].ImdbId}`;
-                li.innerHTML = `<a id="a_${data[i].ImdbId}">
+                li.innerHTML = `<a href="/movie/${data[i].ImdbId}" id="a_${data[i].ImdbId}">
                 <img src="${data[i].Poster}">
                 <div class="yearTitle">
                 <p>${data[i].Year}</p>
