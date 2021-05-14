@@ -79,8 +79,8 @@
     border-radius: 5px;
     display: block;
     width: 90%;
-    padding: 10px;
     margin-bottom: 10px;
+    padding: 10px;
     cursor: pointer;
 }
 
@@ -107,3 +107,27 @@
 .yearTitle p{
     margin-top: 2%;
 }
+
+.btnWatched {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    float: right;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: #ffffff;
+    margin-top: -5%;
+}
+
+.btnWatched p, .btnWatched i{
+    display: inline-block;
+    margin: 0;
+}
+
+.btnWatched p {
+    margin-left: 4px;
+}
+
+.btnWatched:hover {
+    background-color: rgb(238, 238, 238);
+}
+

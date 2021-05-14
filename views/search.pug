@@ -10,14 +10,14 @@ block content
         ul#entries
             each element in movieList
                 li(id=`li_${element.imdbID}` class="entry")
-                    
-                    if element.Poster == "N/A"
-                        img(src="https://via.placeholder.com/140x210?text=Cinetally")
-                    else
-                        img(src=`${element.Poster}`)
-                    .yearTitle
-                        p= element.Year
-                        h3= element.Title
+                    div(id=`div_${element.imdbID}` class="entryLink")
+                        if element.Poster == "N/A"
+                            img(src="https://via.placeholder.com/140x210?text=Cinetally")
+                        else
+                            img(src=`${element.Poster}`)
+                        .yearTitle
+                            p= element.Year
+                            h3= element.Title
                     div(id=`div_${element.imdbID}` class="addMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
                         i(id=`i_${element.imdbID}` class="fas fa-plus")
                         p(id=`p_${element.imdbID}`) Add to list

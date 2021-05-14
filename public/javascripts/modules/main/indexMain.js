@@ -17,10 +17,16 @@ export function displayList() {
                 li.className= 'entry';
                 li.id = `li_${data[i].ImdbId}`;
                 li.innerHTML = `
+                <div id="div_${data[i].ImdbId}" class="entryLink">
                 <img src="${data[i].Poster}">
                 <div class="yearTitle">
                 <p>${data[i].Year}</p>
                 <h3>${data[i].Title}</h3>
+                </div>
+                </div>
+                <div id="div_${data[i].ImdbId}" class="btnWatched">
+                <i id="i_${data[i].ImdbId}" class="fas fa-plus"></i>
+                <p id="p_${data[i].ImdbId}">Mark as watched</p>
                 </div>
                 `;
 

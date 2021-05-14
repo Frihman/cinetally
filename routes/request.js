@@ -121,6 +121,16 @@ router.post('/movie', function(req, res, next) {
   
 });
 
+router.put('/movie/watched/:id', function(req, res, next) {
+  if (req.session.loggedIn) {
+    mySQLQuery(`UPDATE Movie SET Watched = 1 WHERE ImdbId = ${req.params.id}`, function(result) {
+      res.send(result);
+    })
+  } else {
+    res.send('access denied');
+  }
+});
+
 router.delete('/movies', function(req, res, next) {
   if (req.session.loggedIn) {
     var query = '';

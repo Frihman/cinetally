@@ -42,9 +42,9 @@
     border-radius: 5px;
     display: block;
     width: 90%;
-    padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
+    padding: 10px;
 }
 
 #entries li img {
@@ -54,6 +54,10 @@
 
 #entries li:hover {
     background-color: rgb(235, 235, 235);
+}
+
+.entryLink {
+    border-radius: 5px;
 }
 
 .yearTitle {

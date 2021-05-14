@@ -9,25 +9,32 @@ export function toggleRemoveMovies() {
         document.getElementById('cancelConfirm').style.display = 'none';
         document.getElementById('removeMovies').style.backgroundColor = '#ffffff';
         selectedMovies = [];
-        var divs = document.getElementsByClassName('entry');
+        var divs = document.getElementsByClassName('entryLink');
         for(let i = 0; i < divs.length; i++) {
-            let id = divs[i].id.substring(3);
+            let id = divs[i].id.substring(4);
             divs[i].onclick = function() {
                 window.location = '/movie/' + id;
             };
             divs[i].style.border = '1px solid rgb(204, 204, 204)';
             
         }
+
+        divs = document.getElementsByClassName('entry');
+        for(let i = 0; i < divs.length; i++) {
+            divs[i].style.border = '1px solid rgb(204, 204, 204)';
+        }
         removeIsToggled = false;
     } else {
         document.getElementById('cancelConfirm').style.display = 'block';
         document.getElementById('removeMovies').style.backgroundColor = 'rgb(238, 238, 238)';
-        var divs = document.getElementsByClassName('entry');
+        var borders = document.getElementsByClassName('entry');
+        
+        var divs = document.getElementsByClassName('entryLink');
         for(let i = 0; i < divs.length; i++) {
-            let id = divs[i].id.substring(3);
+            let id = divs[i].id.substring(4);
             
             divs[i].onclick = function() {
-                addMovie(id, divs[i]);
+                addMovie(id, borders[i]);
                 console.log(selectedMovies);
             };
             
