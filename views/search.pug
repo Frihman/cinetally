@@ -9,18 +9,18 @@ block content
             button(id="btnBigSearch") Go
         ul#entries
             each element in movieList
-                li
-                    a(href=`/movie/${element.imdbID}`)
-                        if element.Poster == "N/A"
-                            img(src="https://via.placeholder.com/140x210?text=Cinetally")
-                        else
-                            img(src=`${element.Poster}`)
-                        .yearTitle
-                            p= element.Year
-                            h3= element.Title
-                        div(id=`div_${element.imdbID}` class="addMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
-                            i(id=`i_${element.imdbID}` class="fas fa-plus")
-                            p(id=`p_${element.imdbID}`) Add to list
+                li(id=`li_${element.imdbID}` class="entry")
+                    
+                    if element.Poster == "N/A"
+                        img(src="https://via.placeholder.com/140x210?text=Cinetally")
+                    else
+                        img(src=`${element.Poster}`)
+                    .yearTitle
+                        p= element.Year
+                        h3= element.Title
+                    div(id=`div_${element.imdbID}` class="addMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
+                        i(id=`i_${element.imdbID}` class="fas fa-plus")
+                        p(id=`p_${element.imdbID}`) Add to list
     
     script(src="/javascripts/modules/functions/addMovie.js" type="module")
-    script(src="/javascripts/modules/functions/bigSearchInput.js" type="module")
+    script(src="/javascripts/modules/main/searchMain.js" type="module")

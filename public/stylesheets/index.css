@@ -79,7 +79,9 @@
     border-radius: 5px;
     display: block;
     width: 90%;
+    padding: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 #entries li img {
@@ -87,14 +89,7 @@
     display: inline-block;
 }
 
-#entries a {
-    cursor: pointer;
-    display: block;
-    padding: 10px;
-    
-}
-
-#entries a:hover {
+#entries li:hover {
     background-color: rgb(235, 235, 235);
 }
 

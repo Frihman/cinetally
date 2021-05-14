@@ -11,8 +11,10 @@ export function toggleRemoveMovies() {
         selectedMovies = [];
         var divs = document.getElementsByClassName('entry');
         for(let i = 0; i < divs.length; i++) {
-            
-            divs[i].onclick = '';
+            let id = divs[i].id.substring(3);
+            divs[i].onclick = function() {
+                window.location = '/movie/' + id;
+            };
             divs[i].style.border = '1px solid rgb(204, 204, 204)';
             
         }

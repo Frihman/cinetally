@@ -1,7 +1,10 @@
 import request from '../functions/request.js';
 import {toggleRemoveMovies} from '../functions/indexControls.js';
+import getMoviePage from '../functions/getMoviePage.js';
+import bigSearchInput from '../functions/bigSearchInput.js';
 
 export function displayList() {
+    bigSearchInput();
     request('/request/movie', 'GET', '', function(result) {
         var data = JSON.parse(result);
 
@@ -13,18 +16,19 @@ export function displayList() {
                 var li = document.createElement('li');
                 li.className= 'entry';
                 li.id = `li_${data[i].ImdbId}`;
-                li.innerHTML = `<a href="/movie/${data[i].ImdbId}" id="a_${data[i].ImdbId}">
+                li.innerHTML = `
                 <img src="${data[i].Poster}">
                 <div class="yearTitle">
                 <p>${data[i].Year}</p>
                 <h3>${data[i].Title}</h3>
                 </div>
-                </a>
                 `;
 
                 ul.appendChild(li);
 
             }
+
+            getMoviePage();
         } else {
             document.getElementById('entries').style.display = 'none';
             document.getElementById('controls').style.display = 'none';
