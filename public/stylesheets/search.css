@@ -75,7 +75,7 @@
     margin-top: 2%;
 }
 
-.addMovie {
+.btnAddMovie {
     cursor: pointer;
     padding: 5px;
     border-radius: 5px;
@@ -84,16 +84,16 @@
     border: 1px solid rgb(204, 204, 204);
 }
 
-.addMovie:hover {
+.btnAddMovie:hover {
     background-color: #ffffff;
     
 }
 
-.addMovie p, .addMovie i{
+.btnAddMovie p, .addMovie i{
     display: inline-block;
     margin: 0;
 }
 
-.addMovie p {
+.btnAddMovie p {
     margin-left: 4px;
 }

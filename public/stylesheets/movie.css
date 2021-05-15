@@ -18,7 +18,7 @@
     color: rgb(70, 70, 255);
 }
 
-.addMovie {
+.btnAddMovie {
     cursor: pointer;
     padding: 5px;
     border-radius: 5px;
@@ -26,16 +26,39 @@
     border: 1px solid rgb(204, 204, 204);
 }
 
-.addMovie p, .addMovie i{
+.btnAddMovie p, .addMovie i{
     display: inline-block;
     margin: 0;
 }
 
-.addMovie p {
+.btnAddMovie p {
     margin-left: 4px;
 }
 
-.addMovie:hover {
+.btnAddMovie:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.btnWatched {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: #ffffff;
+    margin-left: 2%;
+}
+
+.btnWatched p, .btnWatched i{
+    display: inline-block;
+    margin: 0;
+}
+
+.btnWatched p {
+    margin-left: 4px;
+}
+
+.btnWatched:hover {
     background-color: rgb(238, 238, 238);
 }
 

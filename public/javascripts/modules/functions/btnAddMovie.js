@@ -1,5 +1,4 @@
 import request from './request.js';
-import checkAddedMovies from './checkAddedMovies.js';
 
 function addMovie(movie) {
   var arr = JSON.parse(movie);
@@ -21,6 +20,6 @@ function addMovie(movie) {
   });
 }
 
-checkAddedMovies();
+
 
 window.addMovie = addMovie;

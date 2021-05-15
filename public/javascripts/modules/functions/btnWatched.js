@@ -13,19 +13,18 @@ export default function btnWatched() {
 }
 
 function markAsWatched(id) {
-    request('request/movie/watched/' + id, 'PUT', '', function(result) {
-        if(document.getElementById(`li_${id}`).style.backgroundColor != 'rgb(0, 202, 0)') {
-            document.getElementById(`li_${id}`).style.backgroundColor = 'rgb(0, 202, 0)';
-            
+    request('/request/movie/watched/' + id, 'PUT', '', function(result) {
+        if(document.getElementById(`pW_${id}`).innerHTML == 'Mark as watched') {
             document.getElementById(`iW_${id}`).className = 'fas fa-check';
             document.getElementById(`pW_${id}`).innerHTML = 'Watched';
+
+            try {document.getElementById(`li_${id}`).style.backgroundColor = 'rgb(0, 202, 0)';} catch{}
         } else {
-            document.getElementById(`li_${id}`).style.backgroundColor = '#ffffff';
-            
             document.getElementById(`iW_${id}`).className = 'fas fa-eye';
             document.getElementById(`pW_${id}`).innerHTML = 'Mark as watched';
+
+            try {document.getElementById(`li_${id}`).style.backgroundColor = '#ffffff';} catch{};
         }
-        console.log(result);
     });
 }
 

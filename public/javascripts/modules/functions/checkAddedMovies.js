@@ -1,13 +1,12 @@
 import request from './request.js';
 
 export default function checkAddedMovies() {
-    var divs = document.getElementsByClassName('addMovie');
+    var divs = document.getElementsByClassName('btnAddMovie');
     for(let i = 0; i < divs.length; i++) {
         let id = divs[i].id.substring(5);
         request('/request/movie/' + id, 'GET', '', function(result) {
             var data = JSON.parse(result);
             if (data.length > 0) {
-                console.log(`iA_${id}`);
                 document.getElementById(`iA_${id}`).className = 'fas fa-check';
                 document.getElementById(`pA_${id}`).innerHTML = 'Added';
 
