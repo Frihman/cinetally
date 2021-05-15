@@ -27,6 +27,8 @@ export function displayList() {
                     innerHTML += `<img src="${data[i].Poster}">`;
                 }
 
+                
+
                 innerHTML += `
                 <div class="yearTitle">
                 <p>${data[i].Year}</p>
@@ -34,10 +36,22 @@ export function displayList() {
                 </div>
                 </div>
                 <div id="btn_${data[i].ImdbId}" class="btnWatched">
-                <i id="i_${data[i].ImdbId}" class="fas fa-eye"></i>
-                <p id="p_${data[i].ImdbId}">Mark as watched</p>
-                </div>
                 `;
+
+                if(data[i].Watched == 1) {
+                    li.style.backgroundColor = 'rgb(0, 202, 0)';
+                    innerHTML += `
+                    <i id="i_${data[i].ImdbId}" class="fas fa-check"></i>
+                    <p id="p_${data[i].ImdbId}">Watched</p>
+                    </div>
+                    `;
+                } else {
+                    innerHTML += `
+                    <i id="i_${data[i].ImdbId}" class="fas fa-eye"></i>
+                    <p id="p_${data[i].ImdbId}">Mark as watched</p>
+                    </div>
+                    `;
+                }
 
                 li.innerHTML = innerHTML;
 
