@@ -1,6 +1,7 @@
 import request from '../functions/request.js';
 import {toggleRemoveMovies} from '../functions/indexControls.js';
 import getMoviePage from '../functions/getMoviePage.js';
+import btnWatched from '../functions/btnWatched.js';
 import bigSearchInput from '../functions/bigSearchInput.js';
 
 export function displayList() {
@@ -16,33 +17,37 @@ export function displayList() {
                 var li = document.createElement('li');
                 li.className= 'entry';
                 li.id = `li_${data[i].ImdbId}`;
-                li.innerHTML = `
+                var innerHTML = `
                 <div id="div_${data[i].ImdbId}" class="entryLink">
                 `;
 
                 if(data[i].Poster == 'N/A') {
-                    li.innerHTML += `<img src="https://via.placeholder.com/140x210?text=Cinetally">`;
+                    innerHTML += `<img src="https://via.placeholder.com/140x210?text=Cinetally">`;
                 } else {
-                    li.innerHTML += `<img src="${data[i].Poster}">`;
+                    innerHTML += `<img src="${data[i].Poster}">`;
                 }
 
-                li.innerHTML += `
+                innerHTML += `
                 <div class="yearTitle">
                 <p>${data[i].Year}</p>
                 <h3>${data[i].Title}</h3>
                 </div>
                 </div>
-                <div id="div_${data[i].ImdbId}" class="btnWatched">
+                <div id="btn_${data[i].ImdbId}" class="btnWatched">
                 <i id="i_${data[i].ImdbId}" class="fas fa-eye"></i>
                 <p id="p_${data[i].ImdbId}">Mark as watched</p>
                 </div>
                 `;
+
+                li.innerHTML = innerHTML;
 
                 ul.appendChild(li);
 
             }
 
             getMoviePage();
+            btnWatched();
+
         } else {
             document.getElementById('entries').style.display = 'none';
             document.getElementById('controls').style.display = 'none';
