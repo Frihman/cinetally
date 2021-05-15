@@ -35,20 +35,20 @@ export function displayList() {
                 <h3>${data[i].Title}</h3>
                 </div>
                 </div>
-                <div id="btn_${data[i].ImdbId}" class="btnWatched">
+                <div id="btnW_${data[i].ImdbId}" class="btnWatched">
                 `;
 
                 if(data[i].Watched == 1) {
                     li.style.backgroundColor = 'rgb(0, 202, 0)';
                     innerHTML += `
-                    <i id="i_${data[i].ImdbId}" class="fas fa-check"></i>
-                    <p id="p_${data[i].ImdbId}">Watched</p>
+                    <i id="iW_${data[i].ImdbId}" class="fas fa-check"></i>
+                    <p id="pW_${data[i].ImdbId}">Watched</p>
                     </div>
                     `;
                 } else {
                     innerHTML += `
-                    <i id="i_${data[i].ImdbId}" class="fas fa-eye"></i>
-                    <p id="p_${data[i].ImdbId}">Mark as watched</p>
+                    <i id="iW_${data[i].ImdbId}" class="fas fa-eye"></i>
+                    <p id="pW_${data[i].ImdbId}">Mark as watched</p>
                     </div>
                     `;
                 }

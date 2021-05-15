@@ -6,7 +6,7 @@ export default function btnWatched() {
     for(let i = 0; i < buttons.length; i++) {
         
         buttons[i].onclick = function() {
-            let id = buttons[i].id.substring(4);
+            let id = buttons[i].id.substring(5);
             markAsWatched(id);
         }
     }
@@ -17,13 +17,13 @@ function markAsWatched(id) {
         if(document.getElementById(`li_${id}`).style.backgroundColor != 'rgb(0, 202, 0)') {
             document.getElementById(`li_${id}`).style.backgroundColor = 'rgb(0, 202, 0)';
             
-            document.getElementById(`i_${id}`).className = 'fas fa-check';
-            document.getElementById(`p_${id}`).innerHTML = 'Watched';
+            document.getElementById(`iW_${id}`).className = 'fas fa-check';
+            document.getElementById(`pW_${id}`).innerHTML = 'Watched';
         } else {
             document.getElementById(`li_${id}`).style.backgroundColor = '#ffffff';
             
-            document.getElementById(`i_${id}`).className = 'fas fa-eye';
-            document.getElementById(`p_${id}`).innerHTML = 'Mark as watched';
+            document.getElementById(`iW_${id}`).className = 'fas fa-eye';
+            document.getElementById(`pW_${id}`).innerHTML = 'Mark as watched';
         }
         console.log(result);
     });

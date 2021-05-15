@@ -18,9 +18,9 @@ block content
                         .yearTitle
                             p= element.Year
                             h3= element.Title
-                    div(id=`div_${element.imdbID}` class="addMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
-                        i(id=`i_${element.imdbID}` class="fas fa-plus")
-                        p(id=`p_${element.imdbID}`) Add to list
+                    div(id=`btnA_${element.imdbID}` class="addMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
+                        i(id=`iA_${element.imdbID}` class="fas fa-plus")
+                        p(id=`pA_${element.imdbID}`) Add to list
     
     script(src="/javascripts/modules/functions/addMovie.js" type="module")
     script(src="/javascripts/modules/main/searchMain.js" type="module")
