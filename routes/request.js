@@ -123,9 +123,19 @@ router.post('/movie', function(req, res, next) {
 
 router.put('/movie/watched/:id', function(req, res, next) {
   if (req.session.loggedIn) {
-    mySQLQuery(`UPDATE Movie SET Watched = NOT Watched WHERE ImdbId = '${req.params.id}' AND UserId = '${req.session.Id}'`, function(result) {
+    mySQLQuery(`UPDATE Movie SET Rating = '0',  Watched = NOT Watched WHERE ImdbId = '${req.params.id}' AND UserId = '${req.session.Id}'`, function(result) {
       res.send(result);
-    })
+    });
+  } else {
+    res.send('access denied');
+  }
+});
+
+router.put('/movie/rating/:id', function(req, res, next) {
+  if (req.session.loggedIn) {
+    mySQLQuery(`UPDATE Movie SET Rating = '${req.body[0]}' WHERE ImdbId = '${req.params.id}' AND UserId = '${req.session.Id}'`, function(result) {
+      res.send(result);
+    });
   } else {
     res.send('access denied');
   }

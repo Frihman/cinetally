@@ -3,6 +3,7 @@ import {toggleRemoveMovies} from '../functions/indexControls.js';
 import getMoviePage from '../functions/getMoviePage.js';
 import btnWatched from '../functions/btnWatched.js';
 import bigSearchInput from '../functions/bigSearchInput.js';
+import selectRating from '../functions/selectRating.js';
 
 export function displayList() {
     bigSearchInput();
@@ -46,6 +47,7 @@ export function displayList() {
                     <p id="pW_${data[i].ImdbId}">Watched</p>
                     </div>
                     <select name="rating" id="r_${data[i].ImdbId}" class="rating">
+                    <option value="" selected disabled hidden>${data[i].Rating}</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -90,6 +92,7 @@ export function displayList() {
 
             getMoviePage();
             btnWatched();
+            selectRating();
 
         } else {
             document.getElementById('entries').style.display = 'none';
