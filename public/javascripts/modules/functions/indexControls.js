@@ -15,7 +15,6 @@ export function toggleRemoveMovies() {
             divs[i].onclick = function() {
                 window.location = '/movie/' + id;
             };
-            divs[i].style.border = '1px solid rgb(204, 204, 204)';
             
         }
 

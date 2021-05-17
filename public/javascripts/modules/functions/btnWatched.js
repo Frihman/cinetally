@@ -19,10 +19,14 @@ function markAsWatched(id) {
             document.getElementById(`iW_${id}`).className = 'fas fa-check';
             document.getElementById(`pW_${id}`).innerHTML = 'Watched';
 
+            document.getElementById(`r_${id}`).style.display = 'inline-block';
+
             try {document.getElementById(`li_${id}`).style.backgroundColor = 'rgb(0, 202, 0)';} catch{}
         } else {
             document.getElementById(`iW_${id}`).className = 'fas fa-eye';
             document.getElementById(`pW_${id}`).innerHTML = 'Mark as watched';
+
+            document.getElementById(`r_${id}`).style.display = 'none';
 
             try {document.getElementById(`li_${id}`).style.backgroundColor = '#ffffff';} catch{};
         }

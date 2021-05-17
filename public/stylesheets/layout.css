@@ -72,7 +72,20 @@ header {
   background-color: rgb(238, 238, 238);
 }
 
+.buttons {
+  float: right;
+  width: 23%;
+  margin-top: -5%;
+}
 
+.rating {
+  display: inline-block;
+  width: 30%;
+  height: 2.4vw;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  border-radius: 5px;
+  border: 1px solid rgb(204, 204, 204);
+}
 
 
   

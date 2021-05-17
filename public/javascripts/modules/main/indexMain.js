@@ -35,6 +35,7 @@ export function displayList() {
                 <h3>${data[i].Title}</h3>
                 </div>
                 </div>
+                <div class="buttons">
                 <div id="btnW_${data[i].ImdbId}" class="btnWatched">
                 `;
 
@@ -44,11 +45,39 @@ export function displayList() {
                     <i id="iW_${data[i].ImdbId}" class="fas fa-check"></i>
                     <p id="pW_${data[i].ImdbId}">Watched</p>
                     </div>
+                    <select name="rating" id="r_${data[i].ImdbId}" class="rating">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    </select>
+                    </div>
                     `;
                 } else {
                     innerHTML += `
                     <i id="iW_${data[i].ImdbId}" class="fas fa-eye"></i>
                     <p id="pW_${data[i].ImdbId}">Mark as watched</p>
+                    </div>
+                    <select name="rating" id="r_${data[i].ImdbId}" class="rating" style="display: none;">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    </select>
                     </div>
                     `;
                 }
