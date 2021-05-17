@@ -13,6 +13,7 @@ export default function btnWatched() {
 }
 
 function markAsWatched(id) {
+    document.getElementById(`iW_${id}`).className = 'fas fa-circle-notch fa-spin';
     request('/request/movie/watched/' + id, 'PUT', '', function(result) {
         if(document.getElementById(`pW_${id}`).innerHTML == 'Mark as watched') {
             document.getElementById(`iW_${id}`).className = 'fas fa-check';
