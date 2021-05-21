@@ -1,7 +1,8 @@
 import request from './request.js';
 import selectRating from '../functions/selectRating.js';
+import btnWatched from './btnWatched.js';
 
-export default function checkWatchedMovies() {
+export default function checkWatchedMovies(selection) {
     var buttons = document.getElementsByClassName('btnWatched');
     for(let i = 0; i < buttons.length; i++) {
         let id = buttons[i].id.substring(5);
@@ -29,6 +30,10 @@ export default function checkWatchedMovies() {
                     `;
 
                     selectRating();
+
+                    if (selection == 'moviePage') {
+                        btnWatched();
+                    }
                     
                 }
                 
