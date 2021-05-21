@@ -31,10 +31,12 @@ export default function checkWatchedMovies(selection) {
 
                     selectRating();
 
-                    if (selection == 'moviePage') {
-                        btnWatched();
-                    }
                     
+                    
+                }
+
+                if (selection == 'moviePage') {
+                    btnWatched();
                 }
                 
                 
