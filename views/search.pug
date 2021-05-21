@@ -7,20 +7,24 @@ block content
         #bigSearch
             input(type="text" id="inputBigSearch" placeholder="query" style="font-size:18px" value=`${query}`)
             button(id="btnBigSearch") Go
-        ul#entries
-            each element in movieList
-                li(id=`li_${element.imdbID}` class="entry")
-                    div(id=`div_${element.imdbID}` class="entryLink")
-                        if element.Poster == "N/A"
-                            img(src="https://via.placeholder.com/140x210?text=Cinetally")
-                        else
-                            img(src=`${element.Poster}`)
-                        .yearTitle
-                            p= element.Year
-                            h3= element.Title
-                    div(id=`btnA_${element.imdbID}` class="btnAddMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
-                        i(id=`iA_${element.imdbID}` class="fas fa-plus")
-                        p(id=`pA_${element.imdbID}`) Add to list
+        
+        if movieList != undefined
+            ul#entries
+                each element in movieList
+                    li(id=`li_${element.imdbID}` class="entry")
+                        div(id=`div_${element.imdbID}` class="entryLink")
+                            if element.Poster == "N/A"
+                                img(src="https://via.placeholder.com/140x210?text=Cinetally")
+                            else
+                                img(src=`${element.Poster}`)
+                            .yearTitle
+                                p= element.Year
+                                h3= element.Title
+                        div(id=`btnA_${element.imdbID}` class="btnAddMovie" onclick=`addMovie('${JSON.stringify(element)}')`)
+                            i(id=`iA_${element.imdbID}` class="fas fa-plus")
+                            p(id=`pA_${element.imdbID}`) Add to list
+        else
+            p No matching result. Try searching for something else.
     
     script(src="/javascripts/modules/functions/btnAddMovie.js" type="module")
     script(src="/javascripts/modules/main/searchMain.js" type="module")
