@@ -9,25 +9,30 @@ export default function checkWatchedMovies(selection) {
         request('/request/movie/' + id, 'GET', '', function(result) {
             var data = JSON.parse(result);
             if(data.length > 0) {
+                document.getElementById('buttons').innerHTML += `
+                <select name="rating" id="r_${data[0].ImdbId}" class="rating">
+                <option value="" selected disabled hidden>${data[0].Rating}</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                </select>
+                `;
+
+                document.getElementById(`r_${data[0].ImdbId}`).style.display = 'none';
+                
                 if(data[0].Watched == 1) {
                     document.getElementById(`iW_${id}`).className = 'fas fa-check';
                     document.getElementById(`pW_${id}`).innerHTML = 'Watched';
-                    document.getElementById('buttons').innerHTML += `
-                    <select name="rating" id="r_${data[0].ImdbId}" class="rating">
-                    <option value="" selected disabled hidden>${data[0].Rating}</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    </select>
-                    `;
+
+                    document.getElementById(`r_${data[0].ImdbId}`).style.display = 'inline-block';
 
                     selectRating();
 
