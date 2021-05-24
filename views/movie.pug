@@ -19,7 +19,7 @@ block content
                 p= movie.Actors
                 a(href=`https://www.imdb.com/title/${movie.imdbID}`) Link to IMDb
                 #buttons
-                    div(id=`btnA_${movie.imdbID}` class="btnAddMovie" onclick=`addMovie('${JSON.stringify(movie)}')`)
+                    div(id=`btnA_${movie.imdbID}` class="btnAddMovie" onclick=`addMovie('{"Title": "${movie.Title}", "Year": "${movie.Year}", "imdbID": "${movie.imdbID}", "Poster": "${movie.Poster}"}')`)
                         i(id=`iA_${movie.imdbID}` class="fas fa-plus")
                         p(id=`pA_${movie.imdbID}`) Add to list
                     div(id=`btnW_${movie.imdbID}` class="btnWatched")
