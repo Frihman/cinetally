@@ -29,8 +29,6 @@ function markAsWatched(id) {
             document.getElementById(`iW_${id}`).className = 'fas fa-eye';
             document.getElementById(`pW_${id}`).innerHTML = 'Mark as watched';
 
-            document.getElementById(`r_${id}`).value = 0;
-
             try {document.getElementById(`r_${id}`).style.display = 'none';} catch{};
 
             try {document.getElementById(`li_${id}`).style.backgroundColor = '#ffffff';} catch{};
