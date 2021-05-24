@@ -11,23 +11,8 @@ export default function checkAddedMovies() {
                 var data = JSON.parse(result);
                 
                 if (data.length > 0) {
-                    var movieData = {imdbID: data[0].ImdbId, Title: data[0].Title, Year: data[0].Year, Poster: data[0].Poster};
-                    document.getElementById(`btnA_${id}`).removeAttribute('onclick');
-                    
-                    
                     document.getElementById(`iA_${id}`).className = 'fas fa-check';
                     document.getElementById(`pA_${id}`).innerHTML = 'Added';
-    
-                    divs[i].onclick = function() {
-                        request('/request/movie/inactive', 'POST', JSON.stringify(movieData), function(result) {
-                            document.getElementById(`iA_${id}`).className = 'fas fa-plus';
-                            document.getElementById(`pA_${id}`).innerHTML = 'Add to list';
-                            divs[i].onclick =  function() {
-                                addMovie(JSON.stringify(movieData));
-                            }
-                        });
-                    }
-                    
                     
                 }
                 resolve();

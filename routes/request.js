@@ -100,21 +100,36 @@ router.post('/users', function(req, res, next) {
 
 router.post('/movie', function(req, res, next) {
   if(req.session.loggedIn) {
-    mySQLQuery(`SELECT * FROM Movie_inactive WHERE ImdbId = '${req.body.imdbID}' AND UserId = '${req.session.Id}'`, function(result) {
-      let insertResult = result;
-      if(result.length > 0) {
-        mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Rating, Watched, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', ${result[0].Rating}, ${result[0].Watched}, ${req.session.Id})`, function(result) {
-          mySQLQuery(`DELETE FROM Movie_inactive WHERE ImdbId = '${insertResult[0].ImdbId}' AND UserId = '${req.session.Id}'`, function() {
-            res.send(result);
-          });          
-          
+    mySQLQuery(`SELECT * FROM Movie WHERE ImdbId = '${req.body.imdbID}' AND UserId = '${req.session.Id}'`, function(result) {
+      if (result.length < 1) {
+        mySQLQuery(`SELECT * FROM Movie_inactive WHERE ImdbId = '${req.body.imdbID}' AND UserId = '${req.session.Id}'`, function(result) {
+          let insertResult = result;
+          if(result.length > 0) {
+            mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Rating, Watched, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', ${result[0].Rating}, ${result[0].Watched}, ${req.session.Id})`, function(result) {
+              mySQLQuery(`DELETE FROM Movie_inactive WHERE ImdbId = '${insertResult[0].ImdbId}' AND UserId = '${req.session.Id}'`, function() {
+                res.send(result);
+              });          
+              
+            });
+          } else {
+            mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Watched, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, '${req.session.Id}')`, function(result) {
+              res.send(result);
+            });
+          }
         });
       } else {
-        mySQLQuery(`INSERT INTO Movie (ImdbId, Title, Year, Poster, Watched, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', 0, '${req.session.Id}')`, function(result) {
-          res.send(result);
+        var insertResult = result;
+        mySQLQuery(`INSERT INTO Movie_inactive (ImdbId, Title, Year, Poster, Rating, Watched, UserId) VALUES ('${req.body.imdbID}', '${req.body.Title.replace(/'/g, "''")}', '${req.body.Year}', '${req.body.Poster}', '${insertResult[0].Rating}', 0, ${req.session.Id})`, function() {
+          mySQLQuery(`DELETE FROM Movie WHERE ImdbId = '${req.body.imdbID}' AND UserId = '${req.session.Id}'`, function(result) {
+            result.message = 'deleted';
+            console.log(result);
+            res.send(result);
+          });
         });
       }
     });
+    
+    
     
     
   } else {
@@ -126,7 +141,7 @@ router.post('/movie', function(req, res, next) {
 
 router.put('/movie/watched/:id', function(req, res, next) {
   if (req.session.loggedIn) {
-    mySQLQuery(`UPDATE Movie SET Rating = '0',  Watched = NOT Watched WHERE ImdbId = '${req.params.id}' AND UserId = '${req.session.Id}'`, function(result) {
+    mySQLQuery(`UPDATE Movie SET Watched = NOT Watched WHERE ImdbId = '${req.params.id}' AND UserId = '${req.session.Id}'`, function(result) {
       res.send(result);
     });
   } else {
